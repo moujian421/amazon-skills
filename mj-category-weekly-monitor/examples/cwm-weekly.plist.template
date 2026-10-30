@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.cwm-weekly-__SLUG__</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/bash</string><string>__HOME__/.claude/skills/mj-category-weekly-monitor/scripts/weekly_run.sh</string><string>__SLUG__</string></array>
+  <key>StartCalendarInterval</key>
+  <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <key>EnvironmentVariables</key>
+  <dict><key>PATH</key><string>__HOME__/.npm-global/bin:__HOME__/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string></dict>
+  <key>StandardOutPath</key><string>__HOME__/.claude/skills/mj-category-weekly-monitor/data/__SLUG__/weekly_runs/launchd.out</string>
+  <key>StandardErrorPath</key><string>__HOME__/.claude/skills/mj-category-weekly-monitor/data/__SLUG__/weekly_runs/launchd.err</string>
+</dict>
+</plist>

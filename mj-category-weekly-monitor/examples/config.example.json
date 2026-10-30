@@ -1,0 +1,120 @@
+{
+ "category_name": "Push-Pull Golf Carts",
+ "marketplace": "US",
+ "node_id": "21393083011",
+ "node_path": "3375251:10971181011:3410851:3410901:21393083011",
+ "xiyou": {
+  "categoryId": "<xiyou categoryId>",
+  "categoryName": "Golf Push Carts",
+  "resourceId": "<xiyou resourceId>",
+  "resource_report_date": "2026-10-20"
+ },
+ "sheet": {
+  "token": "<feishu sheet token>",
+  "url": "https://<your-tenant>.feishu.cn/sheets/<feishu sheet token>",
+  "tabs": {
+   "weekly": "竞对动作-周度",
+   "risers": "排名上升-动作复盘",
+   "market": "大盘月度",
+   "keywords": "核心词月度",
+   "daily": "竞对动作-日度"
+  }
+ },
+ "start_week": "2026-09-21",
+ "max_weeks": 8,
+ "top_n": 15,
+ "top_bsr_max": 50,
+ "rank_month": "2026-09",
+ "promo_days": [
+  "2026-10-06",
+  "2026-10-07"
+ ],
+ "keyword_groups": [
+  {
+   "name": "推车/拉车",
+   "terms": [
+    "golf push cart",
+    "golf push cart 3 wheel",
+    "golf bag cart",
+    "push carts for golf bags",
+    "golf pull cart"
+   ]
+  }
+ ],
+ "keyword_by_type": {
+  "3轮推车": "golf push cart",
+  "4轮推车": "golf push cart",
+  "2轮拉车": "golf pull cart"
+ },
+ "riser_rule": {
+  "pool_max_rank": 100,
+  "min_improve_ratio": 0.3,
+  "min_places": 5,
+  "min_places_if_base_le": 15,
+  "min_places_small": 3,
+  "persist_days": 5,
+  "persist_factor": 0.8,
+  "watch_from_rank": 100,
+  "gradual": {
+   "min_weeks": 3,
+   "min_clear_weeks": 2,
+   "rebound": 0.05,
+   "min_improve_ratio": 0.2,
+   "persist_factor": 0.9,
+   "min_r2": 0.4
+  },
+  "exclude_head": true,
+  "new": {
+   "top": 50,
+   "min_days": 3
+  }
+ },
+ "tracked": [
+  {
+   "asin": "B00HI9J3P4",
+   "brand": "Caddytek",
+   "name": "Caddytek CaddyLite V3 3轮",
+   "keyword": "golf push cart",
+   "siblings": [
+    {
+     "asin": "B07DT9BV6P",
+     "name": "Caddytek B07DT9BV6P",
+     "short": "BV6P"
+    },
+    {
+     "asin": "B00HI9J3JU",
+     "name": "Caddytek B00HI9J3JU",
+     "short": "J3JU"
+    }
+   ],
+   "rank": 1,
+   "primary": "B07DT9BV6P",
+   "group_sales": 1599,
+   "subbsr": 2,
+   "image_url": "https://m.media-amazon.com/images/I/61J1LxfD8kL._AC_UL320_.jpg"
+  }
+ ],
+ "risers": [
+  {
+   "asin": "B0H8PB7TVG",
+   "brand": "findway",
+   "name": "findway 3轮万向（7月新品）",
+   "rank": 13,
+   "keyword": "golf push cart",
+   "type": "fast",
+   "added": "2026-10-22",
+   "detected_week": "2026-10-12",
+   "why": "基准期 10 名 → 上周 4 名，改善 62%",
+   "takeoff_text": "10-07 起冲进前 5（13~14 → 3~4），之后稳定在 3~5 名",
+   "grade": "B"
+  }
+ ],
+ "daily": {
+  "top_n": 20,
+  "own_brands": [
+   "<YOUR_BRAND>"
+  ],
+  "drop_min": 0.05,
+  "task": "<用户发起日度监控时的原话（脱敏）>"
+ }
+}
