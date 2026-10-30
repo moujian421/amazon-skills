@@ -16,5 +16,6 @@
 ## 安装
 
 ```bash
-git clone git@github.com:moujian421/mj-market-analysis.git ~/.claude/skills/mj-market-analysis
+git clone git@github.com:moujian421/amazon-skills.git ~/amazon-skills
+ln -s ~/amazon-skills/mj-market-analysis ~/.claude/skills/mj-market-analysis
 ```

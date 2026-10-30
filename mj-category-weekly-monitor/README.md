@@ -20,7 +20,8 @@
 ## 安装
 
 ```bash
-git clone git@github.com:moujian421/mj-category-weekly-monitor.git ~/.claude/skills/mj-category-weekly-monitor
+git clone git@github.com:moujian421/amazon-skills.git ~/amazon-skills
+ln -s ~/amazon-skills/mj-category-weekly-monitor ~/.claude/skills/mj-category-weekly-monitor
 ```
 
 新类目：
