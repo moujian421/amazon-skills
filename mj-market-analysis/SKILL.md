@@ -39,6 +39,12 @@ description: 亚马逊全类目深度市场调研报告生成流程（Amazon Ful
   - 两家平台口径不同导致结论不同时（例如卖家精灵节点 Top100 混有旅行包/戒指盒，西柚类目只含桌面首饰盒），把两家放在同一张图上下对照，并在解读里写清原因。
   - 生成后逐张打开看：标签重叠、图例压住数据、刻度难读都要修。
 
+## Google Trends 州分布（2026-10-30 实测）
+
+- 卖家精灵的 Google Trends 接口只有全国时间序列，没有州分布。agy 的 Gemini 在这个环境里只有网页搜索、没有读网页的工具，也不允许执行本机命令，拿不到州数值（会如实返回“拿不到”）。
+- 做法：本机跑 `references/fetch_google_trends_states.py`（直接请求 Google Trends 网页背后的接口，不经过模型），取近 12 个月和近 5 年两份；再用浏览器打开 Google Trends 页面抽查前 5 名是否一致。页面上的“Related queries / Rising”顺手读出来，能发现站外热点（如动漫 IP 周边）。
+- 解读：剔除人口很少、值为 100 且远超第二名的州（如怀俄明），作为异常值单独注明；其余州差距在约 10 分以内的，写“无明显区域差异”，不硬编区域场景。站外热度冲高而站内搜索不涨的，不能当旺季备货依据。
+
 ## 工作文件放哪
 
 拉数结果、事实摘要、brief、图表都放在本次会话或项目的文件夹里（例如 `<报告目录>/_data/`），不要只放在 `/private/tmp/...` 的 scratchpad：2026-10-27 实测 scratchpad 隔夜被系统清空。万一丢了，agy 的完整返回还在 `~/.gemini/antigravity-cli/brain/*/.system_generated/`，可以按 server/tool/参数重新提取，不必重新扣费拉数。
@@ -217,4 +223,6 @@ description: 亚马逊全类目深度市场调研报告生成流程（Amazon Ful
 - **谁执行**：create / overwrite 这类命令固定的写入，交给 `deepseek-offload` 子 agent 让 DeepSeek 原样执行一条命令（DeepSeek 不通改 Gemini Flash）；Claude 先 `--dry-run` 预演，跑完自己回读核对。
 - **文件位置**：lark-cli 只读当前目录、`/tmp`、`~/files` 下的 `@文件`；报告和图表 HTML 先复制到 `~/files/<任务名>/`，HTML 块写绝对路径 `<html5-block path="@/Users/.../figN.html"/>`。
 - **Markdown 转义（不转义会出错）**：代码格式（反引号）之外，`$` 写成 `\$`（否则 `$34.99～$39.99` 会被当成 LaTeX 公式，金额丢失、附近加粗失效），`<` 写成 `\<`（`<html5-block` 除外），`~` 写成 `\~`；反引号里面一律不转义。不要在正文里写 LaTeX（如 `$\le$`），直接用“≤”。
+- **交给 DeepSeek 的命令里，`--content @/Users/...` 路径不要加引号**（路径放在 `~/files` 下本来就没有空格）：2026-10-30 DeepSeek 抄带引号的命令时在末尾多加了一个引号，命令没执行；去掉引号后一次成功。直接用 `opencode-cli run --format json` 跑并从 tool 事件核对实际命令，比再开一个子 agent 省事。agy 在无界面模式下不能运行本机命令，不能作为飞书写入的备用执行方。
+- 转换和预演用 `references/md_to_feishu.py`（报告 md → 飞书版 md，复制图表 HTML 到 `~/files/<任务名>/`）。
 - **回读核对**：`docs +fetch` 后检查 `<latex` 数量为 0、`$` 数量与原稿一致、`<html5-block` 数量等于图表数、没有残留的 `**`；再在浏览器里打开看一眼。出错时用 `docs +update --command overwrite` 整篇覆盖，保留原链接。

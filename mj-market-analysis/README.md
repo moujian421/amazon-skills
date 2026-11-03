@@ -5,6 +5,8 @@
 - 完整流程：[SKILL.md](SKILL.md)
 - 报告模板与指标口径：[references/report-template-and-metrics.md](references/report-template-and-metrics.md)
 - 图表示例：`references/charts_example.py`、`references/charts_html_example.py`、`references/minichart.js`
+- Google Trends 州分布抓取：`references/fetch_google_trends_states.py`
+- 报告转飞书版 Markdown：`references/md_to_feishu.py`
 
 ## 依赖
 
